@@ -28,7 +28,7 @@ echo "Removing git files..."
 
 cd $FOLDER/$SLUG
 mv $DEFAULT_SLUG $SLUG
-cde $SLUG
+cd $SLUG
 echo "$PWD"
 
 rm -rf .git
