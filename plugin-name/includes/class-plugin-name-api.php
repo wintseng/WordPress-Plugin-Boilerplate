@@ -36,6 +36,7 @@ class Plugin_Name_Api
             'methods' => 'POST',
             'callback' => array($this, 'plugin-name'),
         ));
+        flush_rewrite_rules();
     }
     public function plugin_name($request)
     {
