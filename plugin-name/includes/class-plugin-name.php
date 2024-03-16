@@ -56,6 +56,7 @@ class Plugin_Name {
 	 * @var      string    $version    The current version of the plugin.
 	 */
 	protected $version;
+	protected $api;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -76,6 +77,7 @@ class Plugin_Name {
 
 		$this->load_dependencies();
 		$this->set_locale();
+		$this->set_routes();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
@@ -125,7 +127,15 @@ class Plugin_Name {
 		$this->loader = new Plugin_Name_Loader();
 
 	}
-
+	 /* Define the custom REST API for this plugin.
+	 * 
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function set_routes()
+	{
+		$this->loader->add_action('rest_api_init', $this->api, 'register_routes');
+	}
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
