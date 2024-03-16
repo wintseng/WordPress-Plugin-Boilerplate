@@ -123,6 +123,7 @@ class Plugin_Name {
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-plugin-name-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-plugin-name-api.php';
 
 		$this->loader = new Plugin_Name_Loader();
 

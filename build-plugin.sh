@@ -28,8 +28,8 @@ echo "Removing git files..."
 
 cd $FOLDER/$SLUG
 mv $DEFAULT_SLUG $SLUG
+cde $SLUG
 echo "$PWD"
-exit
 
 rm -rf .git
 rm README.md
