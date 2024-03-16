@@ -65,7 +65,7 @@ rm $SLUG.tmp
 # sed "s/$DEFAULT_NAME/$NAME/g" readme.tmp > readme.txt
 # rm readme.tmp
 
-cd lang
+cd languages
 mv $DEFAULT_SLUG.pot $SLUG.pot
 
 # cp $SLUG.pot $SLUG.tmp
@@ -123,7 +123,7 @@ cp class-$SLUG-deactivator.php class-$SLUG-deactivator.tmp
 sed "s/$DEFAULT_TOKEN/$TOKEN/g" class-$SLUG-deactivator.tmp > class-$SLUG-deactivator.php
 rm class-$SLUG-deactivator.tmp
 
-cp class-$SLUG-deactivator.php class-$SLUG-deadectivator.tmp
+cp class-$SLUG-deactivator.php class-$SLUG-deactivator.tmp
 sed "s/$DEFAULT_SLUG/$SLUG/g" class-$SLUG-deactivator.tmp > class-$SLUG-deactivator.php
 rm class-$SLUG-deactivator.tmp
 
