@@ -26,8 +26,10 @@ git clone https://github.com/wintseng/WordPress-Plugin-Boilerplate.git $FOLDER/$
 
 echo "Removing git files..."
 
-mkdir -p $FOLDER
 cd $FOLDER/$SLUG
+mv $DEFAULT_SLUG $SLUG
+echo "$PWD"
+exit
 
 rm -rf .git
 rm README.md
