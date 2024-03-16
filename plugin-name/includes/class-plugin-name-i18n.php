@@ -37,7 +37,7 @@ class Plugin_Name_i18n {
 		load_plugin_textdomain(
 			'plugin-name',
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/lang'
 		);
 
 	}
