@@ -13,7 +13,7 @@ read GRUNT
 printf "Initialise new git repo (y/n): "
 read NEWREPO
 
-DEFAULT_NAME="plugin-name"
+DEFAULT_NAME="Plugin Name"
 DEFAULT_CLASS=${DEFAULT_NAME// /_}
 DEFAULT_TOKEN=$( tr '[A-Z]' '[a-z]' <<< $DEFAULT_CLASS)
 DEFAULT_SLUG=${DEFAULT_TOKEN//_/-}
@@ -21,6 +21,9 @@ DEFAULT_SLUG=${DEFAULT_TOKEN//_/-}
 CLASS=${NAME// /_}
 TOKEN=$( tr '[A-Z]' '[a-z]' <<< $CLASS)
 SLUG=${TOKEN//_/-}
+
+echo ${DEFAULT_CLASS}, ${DEFAULT_TOKEN}, ${DEFAULT_SLUG}, ${CLASS}, ${TOKEN}, ${SLUG}
+# exit
 
 git clone https://github.com/wintseng/WordPress-Plugin-Boilerplate.git $FOLDER/$SLUG
 
@@ -234,12 +237,41 @@ mv class-$DEFAULT_SLUG-public.php class-$SLUG-public.php
 mv css/$DEFAULT_SLUG-public.css css/$SLUG-public.css
 mv js/$DEFAULT_SLUG-public.js js/$SLUG-public.js
 mv partials/$DEFAULT_SLUG-public-display.php partials/$SLUG-public-display.php
+cp class-$SLUG-public.php class-$SLUG-public.tmp
+sed "s/$DEFAULT_SLUG/$SLUG/g" class-$SLUG-public.tmp > class-$SLUG-public.php
+rm class-$SLUG-public.tmp
+cp class-$SLUG-public.php class-$SLUG-public.tmp
+sed "s/$DEFAULT_CLASS/$CLASS/g" class-$SLUG-public.tmp > class-$SLUG-public.php
+rm class-$SLUG-public.tmp
+cp class-$SLUG-public.php class-$SLUG-public.tmp
+sed "s/$DEFAULT_TOKEN/$TOKEN/g" class-$SLUG-public.tmp > class-$SLUG-public.php
+rm class-$SLUG-public.tmp
+
+cd ./partials
+cp $SLUG-public-display.php $SLUG-public-display.tmp
+sed "s/$DEFAULT_CLASS/$CLASS/g" $SLUG-public-display.tmp > $SLUG-public-display.php
+rm $SLUG-public-display.tmp
+cd ..
 
 cd ../admin
 mv class-$DEFAULT_SLUG-admin.php class-$SLUG-admin.php
 mv css/$DEFAULT_SLUG-admin.css css/$SLUG-admin.css
 mv js/$DEFAULT_SLUG-admin.js js/$SLUG-admin.js
 mv partials/$DEFAULT_SLUG-admin-display.php partials/$SLUG-admin-display.php
+cp class-$SLUG-admin.php class-$SLUG-admin.tmp
+sed "s/$DEFAULT_SLUG/$SLUG/g" class-$SLUG-admin.tmp > class-$SLUG-admin.php
+rm class-$SLUG-admin.tmp
+cp class-$SLUG-admin.php class-$SLUG-admin.tmp
+sed "s/$DEFAULT_CLASS/$CLASS/g" class-$SLUG-admin.tmp > class-$SLUG-admin.php
+rm class-$SLUG-admin.tmp
+cp class-$SLUG-admin.php class-$SLUG-admin.tmp
+sed "s/$DEFAULT_TOKEN/$TOKEN/g" class-$SLUG-admin.tmp > class-$SLUG-admin.php
+rm class-$SLUG-admin.tmp
+cd ./partials
+cp $SLUG-admin-display.php $SLUG-admin-display.tmp
+sed "s/$DEFAULT_CLASS/$CLASS/g" $SLUG-admin-display.tmp > $SLUG-admin-display.php
+rm $SLUG-admin-display.tmp
+cd ..
 
 if [ "$NEWREPO" == "y" ]; then
 	echo "Initialising new git repo..."
