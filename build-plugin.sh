@@ -25,10 +25,13 @@ SLUG=${TOKEN//_/-}
 # echo ${DEFAULT_CLASS}, ${DEFAULT_TOKEN}, ${DEFAULT_SLUG}, ${CLASS}, ${TOKEN}, ${SLUG}
 
 git clone https://github.com/wintseng/WordPress-Plugin-Boilerplate.git $FOLDER/$SLUG
-exit
+
 echo "Removing git files..."
 
+mkdir -p $FOLDER
 cd $FOLDER/$SLUG
+# echo "$PWD"
+# exit
 
 rm -rf .git
 rm README.md
@@ -60,29 +63,22 @@ cp $SLUG.php $SLUG.tmp
 sed "s/$DEFAULT_CLASS/$CLASS/g" $SLUG.tmp > $SLUG.php
 rm $SLUG.tmp
 
-# cp readme.txt readme.tmp
-# sed "s/$DEFAULT_NAME/$NAME/g" readme.tmp > readme.txt
-# rm readme.tmp
+
+cp uninstall.php uninstall.tmp
+sed "s/$DEFAULT_SLUG/$SLUG/g" uninstall.tmp > uninstall.php
+rm uninstall.tmp
+
+cp uninstall.php uninstall.tmp
+sed "s/$DEFAULT_TOKEN/$TOKEN/g" uninstall.tmp > uninstall.php
+rm uninstall.tmp
+
+cp uninstall.php uninstall.tmp
+sed "s/$DEFAULT_CLASS/$CLASS/g" uninstall.tmp > uninstall.php
+rm uninstall.tmp
+
 
 cd languages
 mv $DEFAULT_SLUG.pot $SLUG.pot
-
-# cp $SLUG.pot $SLUG.tmp
-# sed "s/$DEFAULT_NAME/$NAME/g" $SLUG.tmp > $SLUG.pot
-# rm $SLUG.tmp
-
-# cp $SLUG.pot $SLUG.tmp
-# sed "s/$DEFAULT_CLASS/$CLASS/g" $SLUG.tmp > $SLUG.pot
-# rm $SLUG.tmp
-
-# cp $SLUG.pot $SLUG.tmp
-# sed "s/$DEFAULT_TOKEN/$TOKEN/g" $SLUG.tmp > $SLUG.pot
-# rm $SLUG.tmp
-
-# cp $SLUG.pot $SLUG.tmp
-# sed "s/$DEFAULT_SLUG/$SLUG/g" $SLUG.tmp > $SLUG.pot
-# rm $SLUG.tmp
-
 
 cd ../includes
 mv class-$DEFAULT_SLUG.php class-$SLUG.php
@@ -167,66 +163,6 @@ rm class-$SLUG-loader.tmp
 cp class-$SLUG-loader.php class-$SLUG-loader.tmp
 sed "s/$DEFAULT_SLUG/$SLUG/g" class-$SLUG-loader.tmp > class-$SLUG-loader.php
 rm class-$SLUG-i18n.tmp
-
-# mv class-$DEFAULT_SLUG-settings.php class-$SLUG-settings.php
-
-# cp class-$SLUG-settings.php class-$SLUG-settings.tmp
-# sed "s/$DEFAULT_CLASS/$CLASS/g" class-$SLUG-settings.tmp > class-$SLUG-settings.php
-# rm class-$SLUG-settings.tmp
-
-# cp class-$SLUG-settings.php class-$SLUG-settings.tmp
-# sed "s/$DEFAULT_TOKEN/$TOKEN/g" class-$SLUG-settings.tmp > class-$SLUG-settings.php
-# rm class-$SLUG-settings.tmp
-
-# cp class-$SLUG-settings.php class-$SLUG-settings.tmp
-# sed "s/$DEFAULT_SLUG/$SLUG/g" class-$SLUG-settings.tmp > class-$SLUG-settings.php
-# rm class-$SLUG-settings.tmp
-
-
-# cd lib
-# mv class-$DEFAULT_SLUG-post-type.php class-$SLUG-post-type.php
-
-# cp class-$SLUG-post-type.php class-$SLUG-post-type.tmp
-# sed "s/$DEFAULT_CLASS/$CLASS/g" class-$SLUG-post-type.tmp > class-$SLUG-post-type.php
-# rm class-$SLUG-post-type.tmp
-
-# cp class-$SLUG-post-type.php class-$SLUG-post-type.tmp
-# sed "s/$DEFAULT_TOKEN/$TOKEN/g" class-$SLUG-post-type.tmp > class-$SLUG-post-type.php
-# rm class-$SLUG-post-type.tmp
-
-# cp class-$SLUG-post-type.php class-$SLUG-post-type.tmp
-# sed "s/$DEFAULT_SLUG/$SLUG/g" class-$SLUG-post-type.tmp > class-$SLUG-post-type.php
-# rm class-$SLUG-post-type.tmp
-
-
-# mv class-$DEFAULT_SLUG-taxonomy.php class-$SLUG-taxonomy.php
-
-# cp class-$SLUG-taxonomy.php class-$SLUG-taxonomy.tmp
-# sed "s/$DEFAULT_CLASS/$CLASS/g" class-$SLUG-taxonomy.tmp > class-$SLUG-taxonomy.php
-# rm class-$SLUG-taxonomy.tmp
-
-# cp class-$SLUG-taxonomy.php class-$SLUG-taxonomy.tmp
-# sed "s/$DEFAULT_TOKEN/$TOKEN/g" class-$SLUG-taxonomy.tmp > class-$SLUG-taxonomy.php
-# rm class-$SLUG-taxonomy.tmp
-
-# cp class-$SLUG-taxonomy.php class-$SLUG-taxonomy.tmp
-# sed "s/$DEFAULT_SLUG/$SLUG/g" class-$SLUG-taxonomy.tmp > class-$SLUG-taxonomy.php
-# rm class-$SLUG-taxonomy.tmp
-
-
-# mv class-$DEFAULT_SLUG-admin-api.php class-$SLUG-admin-api.php
-
-# cp class-$SLUG-admin-api.php class-$SLUG-admin-api.tmp
-# sed "s/$DEFAULT_CLASS/$CLASS/g" class-$SLUG-admin-api.tmp > class-$SLUG-admin-api.php
-# rm class-$SLUG-admin-api.tmp
-
-# cp class-$SLUG-admin-api.php class-$SLUG-admin-api.tmp
-# sed "s/$DEFAULT_TOKEN/$TOKEN/g" class-$SLUG-admin-api.tmp > class-$SLUG-admin-api.php
-# rm class-$SLUG-admin-api.tmp
-
-# cp class-$SLUG-admin-api.php class-$SLUG-admin-api.tmp
-# sed "s/$DEFAULT_SLUG/$SLUG/g" class-$SLUG-admin-api.tmp > class-$SLUG-admin-api.php
-# rm class-$SLUG-admin-api.tmp
 
 cd ../public
 mv class-$DEFAULT_SLUG-public.php class-$SLUG-public.php
