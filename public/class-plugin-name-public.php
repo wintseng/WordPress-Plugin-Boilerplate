@@ -104,6 +104,8 @@ class Plugin_Name_Public {
 		add_shortcode('plugin_name_shortcode', array($this, 'plugin_name_shortcode'));
 	}
 	public function plugin_name_shortcode() {
+		ob_start();
 		include_once 'partials/plugin-name-public-display.php';
+		return ob_get_clean();
 	}
 }

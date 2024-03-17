@@ -32,17 +32,17 @@ class Plugin_Name_Api
      */
     public function register_routes()
     {
-        register_rest_route('plugin-name/v1', '/plugin-name/(?P<op>\w+)', array(
+        register_rest_route('plugin-name/v1', '/api/(?P<op>\w+)', array(
             'methods' => 'POST',
-            'callback' => array($this, 'plugin-name'),
+            'callback' => array($this, 'api'),
         ));
         flush_rewrite_rules();
     }
-    public function plugin_name($request)
+    public function api($request)
     {
         $op = $request['op'];
         $data = array();
-        if ($op == 'get-plugin-name') {
+        if ($op == 'getall') {
             $data['plugin_name'] = 'Plugin Name';
         }
         wp_send_json($data);
