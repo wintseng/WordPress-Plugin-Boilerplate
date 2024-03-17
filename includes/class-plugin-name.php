@@ -76,7 +76,8 @@ class Plugin_Name {
 		$this->plugin_name = 'plugin-name';
 
 		$this->load_dependencies();
-		$this->set_locale();
+		$this->load_plugin_textdomain();
+		// $this->set_locale();
 		$this->set_routes();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
@@ -111,7 +112,7 @@ class Plugin_Name {
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-plugin-name-i18n.php';
+		// require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-plugin-name-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
@@ -138,6 +139,13 @@ class Plugin_Name {
 	{
 		$this->loader->add_action('rest_api_init', $this->api, 'register_routes');
 	}
+	public function load_plugin_textdomain()
+	{
+		$locale = apply_filters('plugin_locale', get_locale(), $this->plugin_name);
+
+		load_textdomain($this->plugin_name, WP_LANG_DIR . '/' . $this->plugin_name . '/' . $this->plugin_name . '-' . $locale . '.mo');
+		load_plugin_textdomain($this->plugin_name, false, dirname(plugin_basename(__DIR__)) . '/languages');
+	} 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
