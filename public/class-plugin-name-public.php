@@ -51,7 +51,7 @@ class Plugin_Name_Public {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
+		$this->add_shortcode();
 	}
 
 	/**
@@ -100,4 +100,10 @@ class Plugin_Name_Public {
 
 	}
 
+	public function add_shortcode() {
+		add_shortcode('plugin_name_shortcode', array($this, 'plugin_name_shortcode'));
+	}
+	public function plugin_name_shortcode() {
+		include_once 'partials/plugin-name-public-display.php';
+	}
 }

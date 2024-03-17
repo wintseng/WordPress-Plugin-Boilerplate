@@ -51,7 +51,7 @@ class Plugin_Name_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
+		add_action('admin_menu', array($this, 'add_admin_pages'));
 	}
 
 	/**
@@ -99,5 +99,21 @@ class Plugin_Name_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+	public function add_admin_pages()
+	{
+		add_menu_page(
+			__($this->plugin_name . ' settings', $this->plugin_name),
+			__($this->plugin_name . ' settings', $this->plugin_name),
+			'manage_options',
+			$this->plugin_name,
+			array($this, 'plugin_name_admin_settings_page'),
+			'dashicons-admin-generic',
+			110
+		);
+	}
 
+	public function plugin_name_admin_settings_page()
+	{
+		include_once 'partials/plugin-name-admin-display.php';
+	}
 }
