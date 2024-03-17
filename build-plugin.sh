@@ -22,17 +22,13 @@ CLASS=${NAME// /_}
 TOKEN=$( tr '[A-Z]' '[a-z]' <<< $CLASS)
 SLUG=${TOKEN//_/-}
 
-echo ${DEFAULT_CLASS}, ${DEFAULT_TOKEN}, ${DEFAULT_SLUG}, ${CLASS}, ${TOKEN}, ${SLUG}
-# exit
+# echo ${DEFAULT_CLASS}, ${DEFAULT_TOKEN}, ${DEFAULT_SLUG}, ${CLASS}, ${TOKEN}, ${SLUG}
 
 git clone https://github.com/wintseng/WordPress-Plugin-Boilerplate.git $FOLDER/$SLUG
-
+exit
 echo "Removing git files..."
 
 cd $FOLDER/$SLUG
-mv $DEFAULT_SLUG $SLUG
-cd $SLUG
-echo "$PWD"
 
 rm -rf .git
 rm README.md
