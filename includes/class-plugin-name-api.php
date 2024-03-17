@@ -32,7 +32,7 @@ class Plugin_Name_Api
      */
     public function register_routes()
     {
-        register_rest_route('plugin-name/v1', '/plugin-name/(?P<op>\w', array(
+        register_rest_route('plugin-name/v1', '/plugin-name/(?P<op>\w+)', array(
             'methods' => 'POST',
             'callback' => array($this, 'plugin-name'),
         ));
