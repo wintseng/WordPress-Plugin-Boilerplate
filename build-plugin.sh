@@ -47,9 +47,9 @@ echo "Updating plugin files..."
 
 mv $DEFAULT_SLUG.php $SLUG.php
 
-cp $SLUG.php $SLUG.tmp
-sed "s/$DEFAULT_NAME/$NAME/g" $SLUG.tmp > $SLUG.php
-rm $SLUG.tmp
+# cp $SLUG.php $SLUG.tmp
+# sed "s/$DEFAULT_NAME/$NAME/g" $SLUG.tmp > $SLUG.php
+# rm $SLUG.tmp
 
 cp $SLUG.php $SLUG.tmp
 sed "s/$DEFAULT_SLUG/$SLUG/g" $SLUG.tmp > $SLUG.php
